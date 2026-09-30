@@ -2,21 +2,29 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
+    [SerializeField] private Color m_hurtColor;
     [SerializeField] private InputActionAsset m_inputActions;
     [SerializeField] private GameObject m_projectilePrefab;
     [SerializeField] private float m_moveSpeed = 5.0f;
     [SerializeField] private float m_attackSpeed = 0.5f;
     [SerializeField] private float m_projectileSpeed = 1f;
+    [SerializeField] private float m_projectileDamage = 50f;
     [SerializeField] private float m_movementSlowDuration = 0.2f;
     [SerializeField] private float m_movementSlowStrength = 0.2f;
+
+    [SerializeField] private float m_hurtColorFlickSpeed = 0.1f;
+    [SerializeField] private float m_maxHP = 100f;
+
+    private float m_currHP;
 
     private InputAction m_move;
     private InputAction m_attack;
 
     private Animator m_animator;
     private Rigidbody2D m_rigidBody;
+    private SpriteRenderer m_sprite;
 
     private float m_attackTimer;
 
@@ -26,12 +34,14 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        m_currHP = m_maxHP;
 
         m_move = m_inputActions.FindAction("Move");
         m_attack = m_inputActions.FindAction("Attack");
 
         m_animator = GetComponent<Animator>();
         m_rigidBody = GetComponent<Rigidbody2D>();
+        m_sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -84,6 +94,7 @@ public class Player : MonoBehaviour
 
     public void Shoot()
     {
+        if (m_isAttacking == true) { return; }
         m_isAttacking = true;
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -96,10 +107,18 @@ public class Player : MonoBehaviour
 
         StartCoroutine(MovementLockout());
 
-        GameObject projectile = Instantiate(m_projectilePrefab, this.transform.position, Quaternion.identity);
+        //GameObject projectile = Instantiate(m_projectilePrefab, this.transform.position, Quaternion.identity);
+        GameObject projectile = RunManager.Instance.ProjectileManager.GetPlayerProjectile();
 
+        //set position and rotation
+        projectile.transform.position = transform.position;
         projectile.transform.right = normalizedDirection;
-        projectile.GetComponent<PlayerProjectile>().SetVariables(normalizedDirection, m_projectileSpeed);
+
+        //clear the trail to avoid smearing across the screen
+        projectile.GetComponentInChildren<TrailRenderer>().Clear();
+
+        //set projectile variables
+        projectile.GetComponent<PlayerProjectile>().SetVariables(normalizedDirection, m_projectileSpeed, m_projectileDamage);
     }
 
     private IEnumerator MovementLockout()
@@ -114,4 +133,46 @@ public class Player : MonoBehaviour
         m_isAttacking = false;
     }
 
+    public void Hurt(float damageAmount)
+    {
+        m_currHP -= damageAmount;
+        if (m_currHP <= 0)
+        {
+            m_currHP = 0;
+            Die();
+        }
+        else
+        {
+            StartCoroutine(HitReact());
+        }
+
+        Debug.Log("my HP is at " + m_currHP);
+    }
+
+    public void Heal(float healAmount)
+    {
+        m_currHP += healAmount;
+        if (m_currHP > m_maxHP)
+        {
+            m_currHP = m_maxHP;
+        }
+
+        Debug.Log("my HP is at " + m_currHP);
+    }
+
+    public void Die()
+    {
+        Debug.Log("I'M DEAD!");
+    }
+
+    private IEnumerator HitReact()
+    {
+        m_sprite.color = m_hurtColor;
+        yield return new WaitForSeconds(m_hurtColorFlickSpeed);
+        m_sprite.color = Color.white;
+        yield return new WaitForSeconds(m_hurtColorFlickSpeed);
+        m_sprite.color = m_hurtColor;
+        yield return new WaitForSeconds(m_hurtColorFlickSpeed);
+        m_sprite.color = Color.white;
+    }
 }

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6548419130931309325}
   - component: {fileID: 4939575045634430611}
   - component: {fileID: 2761230412612067131}
-  m_Layer: 0
-  m_Name: Arrow
+  m_Layer: 7
+  m_Name: PlayerArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b102896064b55734abdc83abb60d0d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_lifetime: 5
 --- !u!1 &5532604169033339214
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8238680003361003585}
   - component: {fileID: 5224653535176613019}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,16 +15,6 @@ public class SceneTransitionManager : MonoBehaviour
         StartCoroutine(Crossfade(sceneName));
     }
 
-    private IEnumerator FadeIn()
-    {
-        yield return new WaitForSeconds(1f);
-    }
-
-    private void FadeOut()
-    {
-
-    }
-
     private IEnumerator Crossfade(string sceneName)
     {
         m_blackScreen.enabled = true;
@@ -40,7 +30,6 @@ public class SceneTransitionManager : MonoBehaviour
             Color newColor = Color.Lerp(alphaBlackScreen, solidBlackScreen, elapsed / (m_crossfadeDuration/2));
             m_blackScreen.color = newColor;
 
-            Debug.Log(m_blackScreen.color.a);
             elapsed += Time.deltaTime;
             yield return null;
         }

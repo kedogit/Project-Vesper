@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] private float m_maxHP = 100f;
     [SerializeField] private float m_hurtColorFlickSpeed = 0.1f;
-    [SerializeField] private Color m_hurtColor;
+    [SerializeField] private Color m_hurtColor = Color.red;
 
     private SpriteRenderer m_sprite;
 

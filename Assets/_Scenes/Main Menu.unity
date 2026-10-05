@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: 454378606}
   - component: {fileID: 454378605}
   m_Layer: 5
-  m_Name: Boar
+  m_Name: Mushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -631,7 +631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 694, y: -93}
+  m_AnchoredPosition: {x: 694, y: -32}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &454378605
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2111623608, guid: 8a51abd70c0d4ce4dac6d41665785ab1, type: 3}
+  m_Sprite: {fileID: -1608108351, guid: b29e32ee3e844504498ef0ee57ee76cd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1124,7 +1124,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300048, guid: 1c9ed9d1200c29d4cbfd2071028c1cd5, type: 3}
+  m_Sprite: {fileID: 1177446782, guid: 1c9ed9d1200c29d4cbfd2071028c1cd5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1199,7 +1199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300048, guid: 1c9ed9d1200c29d4cbfd2071028c1cd5, type: 3}
+  m_Sprite: {fileID: 426986560, guid: 1c9ed9d1200c29d4cbfd2071028c1cd5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1079475264, guid: 9a7dac47385f10c46adde9967e9d1236, type: 3}
+  m_Sprite: {fileID: 300341426, guid: 9a7dac47385f10c46adde9967e9d1236, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1835,7 +1835,7 @@ RectTransform:
   m_GameObject: {fileID: 1264737406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.25, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 113494956}
@@ -2060,14 +2060,14 @@ RectTransform:
   m_GameObject: {fileID: 1551279345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.26800448, y: 0.418757, z: 0.26800448}
+  m_LocalScale: {x: 0.24905388, y: 0.3891467, z: 0.24905388}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 902720602}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -427, y: 470}
+  m_AnchoredPosition: {x: -416, y: 496}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1551279347
@@ -2090,7 +2090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1428850429, guid: 877aa0ec458560d46a547c66ed575284, type: 3}
+  m_Sprite: {fileID: -556785952, guid: 877aa0ec458560d46a547c66ed575284, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2332,7 +2332,7 @@ GameObject:
   - component: {fileID: 2052113249}
   - component: {fileID: 2052113248}
   m_Layer: 5
-  m_Name: Bear
+  m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2354,7 +2354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -635, y: -11}
+  m_AnchoredPosition: {x: -693, y: -11}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2052113248
@@ -2377,7 +2377,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1448216205, guid: 922896853465f474bb22ef7c0b61d7b2, type: 3}
+  m_Sprite: {fileID: 1523859122, guid: 1df7ee7507512134d84f28edf71f9a43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

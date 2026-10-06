@@ -53,9 +53,11 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Move()
     {
+        //move the player
         Vector3 inputVector = m_move.ReadValue<Vector2>();
         m_rigidBody.linearVelocity = inputVector * m_moveSpeed * m_movementMultiplier;
 
+        //handle animations
         if (m_move.WasPressedThisFrame())
         {
             m_animator.SetBool("Move", true);
@@ -75,6 +77,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Attack()
     {
+        //this function mostly handles the player animations. the functions handling the actual attack code are triggered by the animation events
         m_attackTimer += Time.deltaTime;
 
         if (m_attack.WasReleasedThisFrame())
@@ -94,20 +97,24 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Shoot()
     {
+        //if already attacking, don't do anything
         if (m_isAttacking == true) { return; }
+
         m_isAttacking = true;
 
+        //grab the mouse position
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mousePos.z = 0;
-
         Vector3 normalizedDirection = (mousePos - this.transform.position).normalized;
 
+        //set the player's animator direction relative to the mouse for animation handling
         m_animator.SetFloat("Vertical", normalizedDirection.y);
         m_animator.SetFloat("Horizontal", normalizedDirection.x);
 
+        //slow down the player
         StartCoroutine(MovementLockout());
 
-        //GameObject projectile = Instantiate(m_projectilePrefab, this.transform.position, Quaternion.identity);
+        //grab a projectile from the projectile manager
         GameObject projectile = RunManager.Instance.ProjectileManager.GetPlayerProjectile();
 
         //set position and rotation
@@ -128,6 +135,7 @@ public class Player : MonoBehaviour, IDamageable
         m_movementMultiplier = 1f;
     }
 
+    //animator tells the script when the attack animation is over
     public void AttackEnd()
     {
         m_isAttacking = false;

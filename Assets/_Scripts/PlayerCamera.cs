@@ -4,6 +4,8 @@ public class PlayerCamera : MonoBehaviour
 {
     private Transform m_followTarget;
 
+    private const float zAxis = -10f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,7 +16,7 @@ public class PlayerCamera : MonoBehaviour
     void LateUpdate()
     {
         Vector3 newPosition = m_followTarget.position;
-        newPosition.z = -10;
+        newPosition.z = zAxis;
         transform.position = newPosition;
     }
 }

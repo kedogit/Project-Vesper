@@ -11,7 +11,6 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void ChangeScene(string sceneName)
     {
-        Debug.Log("called scene change");
         StartCoroutine(Crossfade(sceneName));
     }
 
@@ -19,12 +18,14 @@ public class SceneTransitionManager : MonoBehaviour
     {
         m_blackScreen.enabled = true;
 
+        //fetch colors to fade between
         Color solidBlackScreen = Color.black;
         Color alphaBlackScreen = solidBlackScreen;
         alphaBlackScreen.a = 0f;
 
         float elapsed = 0f;
 
+        //slowly turn screen black
         while (m_blackScreen.color.a < 1f)
         {
             Color newColor = Color.Lerp(alphaBlackScreen, solidBlackScreen, elapsed / (m_crossfadeDuration/2));
@@ -34,10 +35,12 @@ public class SceneTransitionManager : MonoBehaviour
             yield return null;
         }
 
+        //change scene when screen is fully black
         SceneManager.LoadScene(sceneName);
 
         elapsed = 0f;
 
+        //slowly turn off the black screen
         while (m_blackScreen.color.a > 0f)
         {
             Color newColor = Color.Lerp(solidBlackScreen, alphaBlackScreen, elapsed / (m_crossfadeDuration/2));

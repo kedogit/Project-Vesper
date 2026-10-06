@@ -130,8 +130,8 @@ MonoBehaviour:
   m_projectilePrefab: {fileID: 2103142316992787015, guid: 57635ac92777f5c4e96c77c5c5a346de, type: 3}
   m_moveSpeed: 4
   m_attackSpeed: 0.5
-  m_projectileSpeed: 15
-  m_projectileDamage: 1
+  m_projectileSpeed: 20
+  m_projectileDamage: 15
   m_movementSlowDuration: 0.2
   m_movementSlowStrength: 0.75
   m_hurtColorFlickSpeed: 0.1

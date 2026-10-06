@@ -15,10 +15,4 @@ public class RunManager : Singleton<RunManager>
         base.Awake();
         Instantiate(m_playerPrefab, m_playerSpawn);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

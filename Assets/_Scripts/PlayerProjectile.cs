@@ -22,11 +22,17 @@ public class PlayerProjectile : MonoBehaviour
     void Update()
     {
         CheckLifetime();
+        Move();
+    }
+
+    private void Move()
+    {
         m_rigidBody.linearVelocity = m_direction * m_projectileSpeed;
     }
 
     public void SetVariables(Vector3 direction, float projectileSpeed, float damageAmount)
     {
+        //function called by the shooter to centralize variables and tweak values quicker
         m_direction = direction;
         m_projectileSpeed = projectileSpeed;
         m_damageDealt = damageAmount;
@@ -34,6 +40,7 @@ public class PlayerProjectile : MonoBehaviour
 
     private void CheckLifetime()
     {
+        //if lifetime has elapsed, destroy itself
         m_elapsed += Time.deltaTime;
         
         if (m_elapsed >= m_lifetime)
@@ -44,6 +51,7 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //if colliding with a damageable, hurt it and destroy itself
         if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable target))
         {
             target.Hurt(m_damageDealt);
